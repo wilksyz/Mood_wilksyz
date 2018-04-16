@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- TextViews -->
+    <dimen name="size_text_title">25sp</dimen>
+    <dimen name="size_text_description">40sp</dimen>
+    <!-- Images -->
+    <dimen name="size_image_height">150dip</dimen>
+    <dimen name="size_image_width">150dip</dimen>
+</resources>
