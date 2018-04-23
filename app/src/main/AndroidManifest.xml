@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Controllers.Activities.HistoricActivity"></activity>
+        <receiver android:name=".Models.SaveAlarm" />
     </application>
 
 </manifest>

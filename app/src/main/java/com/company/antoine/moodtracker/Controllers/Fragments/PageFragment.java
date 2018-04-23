@@ -3,9 +3,11 @@ package com.company.antoine.moodtracker.Controllers.Fragments;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,8 @@ import android.widget.RelativeLayout;
 import com.company.antoine.moodtracker.Controllers.Activities.HistoricActivity;
 import com.company.antoine.moodtracker.R;
 
+import static android.content.Context.MODE_PRIVATE;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -25,6 +29,7 @@ public class PageFragment extends Fragment {
     private static final String KEY_POSITION = "position";
     private static final String KEY_COLOR = "color";
     private static final String KEY_IMAGE = "image";
+    private static final String KEY_COMMENT_SAVE = "comment save";
     private static final int[] mResImage = {R.drawable.smiley_sad,
                                             R.drawable.smiley_disappointed,
                                             R.drawable.smiley_normal,
@@ -69,6 +74,7 @@ public class PageFragment extends Fragment {
         int position = getArguments().getInt(KEY_POSITION, -1);
         int color = getArguments().getInt(KEY_COLOR, -1);
         int  image = getArguments().getInt(KEY_IMAGE,-1);
+        final String pPosition = String.valueOf(position);
 
         mColorLayout.setBackgroundColor(color);
         mSmileyMood.setImageResource(image);
@@ -89,15 +95,20 @@ public class PageFragment extends Fragment {
                 LayoutInflater factory = LayoutInflater.from(getActivity());
                 final View alertDialogView = factory.inflate(R.layout.alert_dialog_comment, null);
 
-                builder.setTitle("comment :")
+                builder.setTitle("commentaire :")
                         .setView(alertDialogView)
                         .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                EditText pText = alertDialogView.findViewById(R.id.alert_dialog_edit_comment);
+                                EditText pTextComment = alertDialogView.findViewById(R.id.alert_dialog_edit_comment);
+                                String pComment = (pTextComment.getText().toString())+".".concat(pPosition);
+                                Log.e(getClass().getSimpleName(),pComment);
+                                SharedPreferences preferences = getActivity().getSharedPreferences("MyMood", MODE_PRIVATE);
+                                preferences.edit().putString(KEY_COMMENT_SAVE, pComment)
+                                        .apply();
                             }
                         })
-                        .setNegativeButton("Cancel",
+                        .setNegativeButton("Annuler",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int whichButton) {
 
