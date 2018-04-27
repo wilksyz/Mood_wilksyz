@@ -6,4 +6,11 @@
     <string name="comment_btn">Comment button</string>
     <string name="historic_btn">Historic button</string>
     <string name="smiley_view">Smiley view</string>
+    <string name="btn_1">Il y a une semaine</string>
+    <string name="btn_2">Il y a six jours</string>
+    <string name="btn_3">Il y a cinq jours</string>
+    <string name="btn_4">Il y a quatre jours</string>
+    <string name="btn_5">Il y a trois jours</string>
+    <string name="btn_6">Avant-hier</string>
+    <string name="btn_7">Hier</string>
 </resources>

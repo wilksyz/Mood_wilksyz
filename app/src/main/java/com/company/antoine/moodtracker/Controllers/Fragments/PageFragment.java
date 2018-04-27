@@ -74,7 +74,6 @@ public class PageFragment extends Fragment {
         int position = getArguments().getInt(KEY_POSITION, -1);
         int color = getArguments().getInt(KEY_COLOR, -1);
         int  image = getArguments().getInt(KEY_IMAGE,-1);
-        final String pPosition = String.valueOf(position);
 
         mColorLayout.setBackgroundColor(color);
         mSmileyMood.setImageResource(image);
@@ -101,7 +100,7 @@ public class PageFragment extends Fragment {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 EditText pTextComment = alertDialogView.findViewById(R.id.alert_dialog_edit_comment);
-                                String pComment = (pTextComment.getText().toString())+".".concat(pPosition);
+                                String pComment = pTextComment.getText().toString();
                                 Log.e(getClass().getSimpleName(),pComment);
                                 SharedPreferences preferences = getActivity().getSharedPreferences("MyMood", MODE_PRIVATE);
                                 preferences.edit().putString(KEY_COMMENT_SAVE, pComment)

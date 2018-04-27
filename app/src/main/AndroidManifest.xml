@@ -16,8 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Controllers.Activities.HistoricActivity"></activity>
         <receiver android:name=".Models.SaveAlarm" />
+        <activity android:name=".Controllers.Activities.HistoricActivity"></activity>
     </application>
 
 </manifest>

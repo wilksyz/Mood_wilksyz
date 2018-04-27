@@ -12,9 +12,11 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class SaveAlarm extends BroadcastReceiver{
 
-    private static final String KEY_MOOD_SAVE = "comment save";
+    private static final String KEY_MOOD_SAVE = "mood save";
     private static final String KEY_COMMENT_SAVE = "comment save";
     private static final String KEY_POSITION_SAVE = "position save";
+    private int mNumberSave = 0;
+    private String pNewMoodHistoric;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -26,10 +28,17 @@ public class SaveAlarm extends BroadcastReceiver{
         final String date = String.valueOf(dateNow);
         String pMood = (pPosition+","+pComment+","+date);
         String pMoodHistoric = context.getSharedPreferences("MyMood", MODE_PRIVATE).getString(KEY_MOOD_SAVE, null);
-        String pNewMoodHistoric = (pMood+";"+pMoodHistoric);
-        preferences.edit().putString(KEY_MOOD_SAVE, pNewMoodHistoric)
-                .apply();
+        if (pMoodHistoric != null){
+            pNewMoodHistoric = (pMood+";"+pMoodHistoric);
+        }
+        preferences.edit().putString(KEY_MOOD_SAVE, pNewMoodHistoric).apply();
         preferences.edit().remove(KEY_POSITION_SAVE).apply();
         preferences.edit().remove(KEY_COMMENT_SAVE).apply();
+        mNumberSave++;
+        if (mNumberSave > 7){
+            String[] pReorganization = pNewMoodHistoric.split(";");
+           String pMoodReorganization = ( pReorganization[0] + ";" + pReorganization[1] + ";" + pReorganization[2] + ";" + pReorganization[3] + ";" + pReorganization[4] + ";" + pReorganization[5] + ";" + pReorganization[6]);
+            preferences.edit().putString(KEY_MOOD_SAVE, pMoodReorganization).apply();
+        }
     }
 }

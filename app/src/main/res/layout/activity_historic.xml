@@ -1,15 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.percent.PercentRelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_red_dark"
-    android:gravity="center">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#CECECE">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Génial"
-        android:textSize="40sp"/>
+    <Button
+        android:id="@+id/activity_historic_7"
+        app:layout_widthPercent="100%"
+        app:layout_heightPercent="14.28%"
+        android:layout_alignParentTop="true"
+        android:text="@string/btn_1"
+        android:gravity="top"
+        android:background="#CECECE"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        style="?android:attr/borderlessButtonStyle"/>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/activity_historic_6"
+        app:layout_widthPercent="100%"
+        app:layout_heightPercent="14.28%"
+        android:layout_below="@+id/activity_historic_7"
+        android:text="@string/btn_2"
+        android:gravity="top"
+        android:background="#CECECE"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        style="?android:attr/borderlessButtonStyle"/>
+
+    <Button
+        android:id="@+id/activity_historic_5"
+        app:layout_widthPercent="100%"
+        app:layout_heightPercent="14.28%"
+        android:layout_below="@+id/activity_historic_6"
+        android:text="@string/btn_3"
+        android:gravity="top"
+        android:background="#CECECE"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        style="?android:attr/borderlessButtonStyle"/>
+
+    <Button
+        android:id="@+id/activity_historic_4"
+        app:layout_widthPercent="100%"
+        app:layout_heightPercent="14.28%"
+        android:layout_below="@+id/activity_historic_5"
+        android:text="@string/btn_4"
+        android:gravity="top"
+        android:background="#CECECE"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        style="?android:attr/borderlessButtonStyle"/>
+
+    <Button
+        android:id="@+id/activity_historic_3"
+        app:layout_widthPercent="100%"
+        app:layout_heightPercent="14.28%"
+        android:layout_below="@+id/activity_historic_4"
+        android:text="@string/btn_5"
+        android:gravity="top"
+        android:background="#CECECE"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        style="?android:attr/borderlessButtonStyle"/>
+
+    <Button
+        android:id="@+id/activity_historic_2"
+        app:layout_widthPercent="100%"
+        app:layout_heightPercent="14.28%"
+        android:layout_below="@+id/activity_historic_3"
+        android:text="@string/btn_6"
+        android:gravity="top"
+        android:background="#CECECE"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        style="?android:attr/borderlessButtonStyle"/>
+
+    <Button
+        android:id="@+id/activity_historic_1"
+        app:layout_widthPercent="100%"
+        app:layout_heightPercent="14.28%"
+        android:layout_below="@+id/activity_historic_2"
+        android:text="@string/btn_7"
+        android:gravity="top"
+        android:background="#CECECE"
+        android:paddingEnd="5dp"
+        android:paddingStart="5dp"
+        style="?android:attr/borderlessButtonStyle"/>
+
+</android.support.percent.PercentRelativeLayout>
