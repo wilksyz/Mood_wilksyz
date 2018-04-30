@@ -13,4 +13,6 @@
     <string name="btn_5">Il y a trois jours</string>
     <string name="btn_6">Avant-hier</string>
     <string name="btn_7">Hier</string>
+    <string name="share">Share button</string>
+    <string name="share_tittle">partagez votre humeur!!!</string>
 </resources>

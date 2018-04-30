@@ -16,7 +16,7 @@ public class SaveAlarm extends BroadcastReceiver{
     private static final String KEY_COMMENT_SAVE = "comment save";
     private static final String KEY_POSITION_SAVE = "position save";
     private int mNumberSave = 0;
-    private String pNewMoodHistoric;
+    protected String pNewMoodHistoric;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -30,6 +30,8 @@ public class SaveAlarm extends BroadcastReceiver{
         String pMoodHistoric = context.getSharedPreferences("MyMood", MODE_PRIVATE).getString(KEY_MOOD_SAVE, null);
         if (pMoodHistoric != null){
             pNewMoodHistoric = (pMood+";"+pMoodHistoric);
+        }else{
+            pNewMoodHistoric = pMood;
         }
         preferences.edit().putString(KEY_MOOD_SAVE, pNewMoodHistoric).apply();
         preferences.edit().remove(KEY_POSITION_SAVE).apply();
