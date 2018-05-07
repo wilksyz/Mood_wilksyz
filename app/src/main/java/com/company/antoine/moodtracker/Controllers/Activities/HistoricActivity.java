@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.company.antoine.moodtracker.R;
 
 public class HistoricActivity extends AppCompatActivity implements View.OnClickListener{
@@ -32,6 +31,14 @@ public class HistoricActivity extends AppCompatActivity implements View.OnClickL
     private String[] mDay7;
     private int mLongBoard = 0;
 
+    /**
+     * The list of moods is recovered in the preferences, then the string is split.
+     * Depending on the number of mood saved the view is adjusted from the button 1 which
+     * corresponds to yesterday to the seventh which corresponds to a week ago.
+     * The size of the button as well as the color are adjusted according to the mood
+     * (the more the mood is happy the more the button is big) and an icon appears when a comment is associated with the mood.
+     * When you click on the mood and a comment is associated, it appears in a toast message at the bottom of the screen.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +64,7 @@ public class HistoricActivity extends AppCompatActivity implements View.OnClickL
         mButtonDay6.setOnClickListener(this);
         mButtonDay7.setOnClickListener(this);
 
+        //We check that the string returned by the preferences is not null. If yes we split the chain.
         if (mMoodHistoric != null) {
             mSplit = mMoodHistoric.split(";");
             mLongBoard = mSplit.length;
@@ -168,6 +176,7 @@ public class HistoricActivity extends AppCompatActivity implements View.OnClickL
         }
     }
 
+    //Retrieve the user's clicks on the buttons and display a toast message if a comment is present.
     @Override
     public void onClick(View v) {
         String commentIndex = (String) v.getTag();
@@ -175,6 +184,7 @@ public class HistoricActivity extends AppCompatActivity implements View.OnClickL
             Toast.makeText(this, commentIndex, Toast.LENGTH_LONG).show();
         }
     }
+    //Retrieves in the preferences the character string containing the last saved mood.
     protected void extractBackup(){
             mMoodHistoric = getSharedPreferences("MyMood", MODE_PRIVATE).getString(KEY_MOOD_SAVE, null);
     }

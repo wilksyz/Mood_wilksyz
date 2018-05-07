@@ -1,7 +1,8 @@
-# Mood_wilksyz
-Ces instructions vous permettront d'obtenir une copie du projet opérationnel sur votre machine locale à des fins de développement et de test.
+﻿# Mood_wilksyz
+![logo] /images/logo.png
 
 # Guide d'installation
+Ces instructions vous permettront d'obtenir une copie du projet opérationnel sur votre machine locale à des fins de développement et de test:
 Voud devez disposé d'un emulateur android ou d'un equipement réel pour lancer et tester l'application
 
 # Langages utilisés

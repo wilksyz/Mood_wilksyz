@@ -14,5 +14,6 @@
     <string name="btn_6">Avant-hier</string>
     <string name="btn_7">Hier</string>
     <string name="share">Share button</string>
-    <string name="share_tittle">partagez votre humeur!!!</string>
+    <string name="share_tittle">Partagez votre humeur!!!</string>
+    <string name="please_comment">Veuillez saisir un commentaires :</string>
 </resources>

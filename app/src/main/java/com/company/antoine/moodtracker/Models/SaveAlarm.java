@@ -18,6 +18,13 @@ public class SaveAlarm extends BroadcastReceiver{
     private int mNumberSave = 0;
     protected String pNewMoodHistoric;
 
+    /**
+     *The onReceive method of the saveAlarm class allows you to record
+     * in the preferences the mood of the day as well as the comment if it exists.
+     * The last 7 moods are recorded afterwards in a chain of character.
+     * After the recording The mood of the day and the comment are removed and the mood returns to happy.
+     * After 7 days the registered mood is removed.
+     */
     @Override
     public void onReceive(Context context, Intent intent) {
         Log.e(getClass().getSimpleName(),"broadcast");

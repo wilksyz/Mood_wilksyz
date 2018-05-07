@@ -1,6 +1,5 @@
 package com.company.antoine.moodtracker.Controllers.Fragments;
 
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,20 +14,17 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-
 import com.company.antoine.moodtracker.Controllers.Activities.HistoricActivity;
 import com.company.antoine.moodtracker.R;
-
 import static android.content.Context.MODE_PRIVATE;
 
 /**
  * A simple {@link Fragment} subclass.
  * this fragment allows to create the pages displayed in the viewpager
  */
-public class PageFragment extends Fragment {
+public class PageViewPager extends Fragment {
 
     private static final String KEY_POSITION_SAVE = "position save";
-    private static final String KEY_POSITION = "position";
     private static final String KEY_COLOR = "color";
     private static final String KEY_IMAGE = "image";
     private static final String KEY_COMMENT_SAVE = "comment save";
@@ -39,23 +35,19 @@ public class PageFragment extends Fragment {
                                             R.drawable.smiley_super_happy};
     private static final String[] mMoodShare = {"de très mauvaise humeur","triste","indécis","de bonne humeur","joyeux"};
 
-
-
-    public PageFragment() {
-
+    public PageViewPager() {
     }
 
     /**
-     * Method that will create a new instance of PageFragment.
+     * Method that will create a new instance of PageViewPager.
      * @param pPosition get back the position of the viewpager that we get from the pageadapter
      * @param pColor color index chosen in the color chart according to the position of the viewpager
      */
-    public static PageFragment newInstance(int pPosition, int pColor) {
+    public static PageViewPager newInstance(int pPosition, int pColor) {
 
-        PageFragment mFrag = new PageFragment();
+        PageViewPager mFrag = new PageViewPager();
 
         Bundle args = new Bundle();
-        args.putInt(KEY_POSITION, pPosition);
         args.putInt(KEY_COLOR, pColor);
         args.putInt(KEY_IMAGE,mResImage[pPosition]);
         mFrag.setArguments(args);
@@ -63,11 +55,16 @@ public class PageFragment extends Fragment {
         return(mFrag);
     }
 
-
+    /**
+     *In the Method onCreateView:
+     *We recover the identifiers of the views to be defined.
+     *The background color and the image are defined according to the position of the Viewpager.
+     *We get the clicks on the buttons common to all the pages of the viewpager.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-       View result = inflater.inflate(R.layout.fragment_page, container, false);
+       View result = inflater.inflate(R.layout.view_pager_page, container, false);
 
         RelativeLayout mColorLayout;
         ImageView mSmileyMood;
@@ -81,13 +78,13 @@ public class PageFragment extends Fragment {
         mButtonHistoric = result.findViewById(R.id.fragment_page_btn_historic);
         mButtonShare = result.findViewById(R.id.fragment_page_btn_share);
 
-        int position = getArguments().getInt(KEY_POSITION, -1);
         int color = getArguments().getInt(KEY_COLOR, -1);
         int  image = getArguments().getInt(KEY_IMAGE,-1);
 
         mColorLayout.setBackgroundColor(color);
         mSmileyMood.setImageResource(image);
 
+        //When the user clicks the history button the onClick method starts the history activity.
         mButtonHistoric.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,6 +93,7 @@ public class PageFragment extends Fragment {
             }
         });
 
+        //When the user wants to add a comment we open a pop up window where we find a text entry field and two buttons to cancel or validate the comment.
         mButtonComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -104,7 +102,7 @@ public class PageFragment extends Fragment {
                 LayoutInflater factory = LayoutInflater.from(getActivity());
                 final View alertDialogView = factory.inflate(R.layout.alert_dialog_comment, null);
 
-                builder.setTitle("commentaire :")
+                builder.setTitle("Commentaire :")
                         .setView(alertDialogView)
                         .setPositiveButton("Valider", new DialogInterface.OnClickListener() {
                             @Override
@@ -128,6 +126,8 @@ public class PageFragment extends Fragment {
             }
         });
 
+        //This method click on the button and allows the sharing of mood via a third-party application.
+        //If there is a comment he is also to share.
         mButtonShare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,7 +141,6 @@ public class PageFragment extends Fragment {
 
             }
         });
-
         return result;
     }
 }

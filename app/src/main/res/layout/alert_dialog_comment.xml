@@ -8,6 +8,6 @@
         android:id="@+id/alert_dialog_edit_comment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Please type your comment"/>
+        android:hint="@string/please_comment"/>
 
 </LinearLayout>
