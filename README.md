@@ -1,5 +1,5 @@
-﻿# Mood_wilksyz
-![logo] /images/logo.png
+# Mood_wilksyz
+![logo](/images/logo.png)
 
 # Guide d'installation
 Ces instructions vous permettront d'obtenir une copie du projet opérationnel sur votre machine locale à des fins de développement et de test:
