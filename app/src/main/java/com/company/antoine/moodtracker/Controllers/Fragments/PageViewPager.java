@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,7 +108,6 @@ public class PageViewPager extends Fragment {
                             public void onClick(DialogInterface dialog, int which) {
                                 EditText pTextComment = alertDialogView.findViewById(R.id.alert_dialog_edit_comment);
                                 String pComment = pTextComment.getText().toString();
-                                Log.e(getClass().getSimpleName(),pComment);
                                 SharedPreferences preferences = getActivity().getSharedPreferences("MyMood", MODE_PRIVATE);
                                 preferences.edit().putString(KEY_COMMENT_SAVE, pComment)
                                         .apply();
